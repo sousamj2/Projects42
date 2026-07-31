@@ -1,0 +1,6 @@
+Introduction: https://www.youtube.com/watch?v=zPK1idZuVlM
+Pointers: https://www.youtube.com/watch?v=MluHJmfYg-c
+Recursivity: https://www.youtube.com/watch?v=NHnP2lOiwDo
+Structures: https://www.youtube.com/watch?v=0T3WSmfeC64
+MakeFile: https://www.youtube.com/watch?v=gtbmNNXcN3s
+
