@@ -21,7 +21,7 @@ int	main(void)
 re avec\t\n\tprint_memory\n\n\n\tlol.lol\n ";
 	a = "0123456789abcdef";
 	/* a = "a"; */
-	ft_print_memory(a,30 );
+	ft_print_memory(a,300 );
 }
 /*
 1. Size % 16 = {-1,0,1}
