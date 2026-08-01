@@ -17,7 +17,7 @@ char	*ft_strupcase(char *str)
 	int	index;
 
 	if (!str)
-		return (-1);
+		return (str);
 	index = 0;
 	while (str[index] != '\0')
 	{
