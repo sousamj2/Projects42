@@ -13,7 +13,6 @@
 #include <stdio.h>
 
 void	*ft_print_memory(void *addr, unsigned int size);
-
 int		ft_convert_char_to_hex(unsigned char c, int index);
 void	ft_putnbr16(long long nb, int index);
 void	ft_write_16_chars(unsigned char *addr, int nchar);
@@ -23,7 +22,6 @@ void	ft_handle_end(unsigned char *addr, unsigned int index)
 {
 	unsigned int	nb;
 
-	/* ft_putnbr16(0, index); */
 	nb = 15 - index % 16 ;
 	while (nb > 0)
 	{
@@ -38,8 +36,8 @@ void	ft_handle_end(unsigned char *addr, unsigned int index)
 
 void	ft_putnbr16(long long nb, int index)
 {
-	long long	pow16;
-	unsigned char		c;
+	unsigned char	c;
+	long long		pow16;
 
 	pow16 = 16;
 	if (nb > 16 * 16)
@@ -61,18 +59,19 @@ void	ft_putnbr16(long long nb, int index)
 
 void	ft_write_16_chars(unsigned char *addr, int nchar)
 {
-	int		index;
+	int				index;
 	unsigned char	*c;
 
-	if (nchar < 16) { nchar++; addr++;}
-	/* printf("nchar: [%d]", nchar); */
+	if (nchar < 16)
+	{
+		nchar++;
+		addr++;
+	}
 	c = addr;
 	index = 0;
 	c -= (nchar - 1);
 	write(1, " ", 1);
-	while ((index < nchar ) && c <= addr)
-	//while ((index <= nchar || *c != '\0' ) && c <= addr)
-	/* while (c <= addr) */
+	while ((index < nchar) && c <= addr)
 	{
 		if (*c < ' ' || *c > '~')
 			write(1, ".", 1);
@@ -100,15 +99,12 @@ void	ft_convert_char_to_int(unsigned char c, int index)
 void	*ft_print_memory(void *addr, unsigned int size)
 {
 	unsigned int	index;
-	unsigned char			*c;
+	unsigned char	*c;
 
-	if (!addr || size == 0)
-		return (addr);
 	index = 0;
 	c = (unsigned char *) addr;
-	while (index < size +1)
+	while (addr && !size && index < size +1)
 	{
-		/* if (*c == '\0' || index == size - 1) */
 		if (index == size)
 		{
 			if (index % 16 == 0)
