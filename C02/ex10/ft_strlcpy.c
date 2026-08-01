@@ -9,6 +9,7 @@
 /*   Updated: 2026/07/29 18:20:00 by marisous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+#include <stdio.h>
 
 unsigned int	ft_strlcpy(char *dest, const char *src, unsigned int size);
 
@@ -27,35 +28,27 @@ unsigned int	ft_strlcpy(char *dest, const char *src, unsigned int size)
 		ret_size++;
 		index++;
 	}
-	while (index < size)
-	{
-		dest[index] = '\0';
-		index++;
-	}
 	while (src[ret_size] != '\0')
 		ret_size++;
+	if (index < size)
+	{
+		dest[index] = '\0';
+		return (ret_size);
+	}
 	return (ret_size);
 }
 
-/* #include <stdio.h> */
-/* #include <string.h> */
-
-
 /* #include     <stdio.h> */
-/* #include     <stdlib.h> */
-/* #include     <bsd/string.h> */
-
-
 /* int	main(void) */
 /* { */
-/* 	char	*src = NULL; //"Hello Sargedas!"; */
+/* 	char	*src = "Hello Sargedas!"; */
 /* 	char	dest[20]; */
 /* 	unsigned int n; */
 /* 	unsigned int src_size; */
 	
 /* 	n=10; */
-/* 	/\* src_size = ft_strlcpy(dest,src,n); *\/ */
-/* 	src_size = strlcpy(dest,src,n); */
+/* 	src_size = ft_strlcpy(dest,src,n); */
+/* 	/\* src_size = strlcpy(dest,src,n); *\/ */
 /* 	printf("src  is [%s]\n",src); */
 /* 	printf("dest is [%s]\n",dest); */
 /* 	printf("src size is [%d]\n",src_size); */
