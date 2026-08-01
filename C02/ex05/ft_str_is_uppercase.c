@@ -10,8 +10,6 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-
-
 int	ft_str_is_uppercase(char *str);
 
 int	ft_str_is_uppercase(char *str)

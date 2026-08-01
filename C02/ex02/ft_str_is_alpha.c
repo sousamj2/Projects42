@@ -18,7 +18,6 @@ int	ft_str_is_alpha(char *str)
 
 	if (!str)
 		return (-1);
-
 	index = 0;
 	while (str[index] != '\0')
 	{
