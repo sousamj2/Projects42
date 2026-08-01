@@ -18,8 +18,6 @@ unsigned int	ft_strlcpy(char *dest, const char *src, unsigned int size)
 	unsigned int	index;
 	unsigned int	ret_size;
 
-	/* if (!src || !dest) */
-	/* 	return (-1); */
 	index = 0;
 	ret_size = 0;
 	while (index < size - 1 && src[index] != '\0')
@@ -31,10 +29,7 @@ unsigned int	ft_strlcpy(char *dest, const char *src, unsigned int size)
 	while (src[ret_size] != '\0')
 		ret_size++;
 	if (index < size)
-	{
 		dest[index] = '\0';
-		return (ret_size);
-	}
 	return (ret_size);
 }
 
@@ -45,7 +40,6 @@ unsigned int	ft_strlcpy(char *dest, const char *src, unsigned int size)
 /* 	char	dest[20]; */
 /* 	unsigned int n; */
 /* 	unsigned int src_size; */
-	
 /* 	n=10; */
 /* 	src_size = ft_strlcpy(dest,src,n); */
 /* 	/\* src_size = strlcpy(dest,src,n); *\/ */
