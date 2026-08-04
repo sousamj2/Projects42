@@ -14,7 +14,6 @@
 
 void	*ft_print_memory(void *addr, unsigned int size);
 
-int		ft_convert_char_to_hex(unsigned char c, int index);
 void	ft_putnbr16(long long nb, int index, int option);
 void	ft_write_16_chars(unsigned char *addr, int nchar);
 void	ft_handle_end(unsigned char *addr, unsigned int index);
@@ -73,7 +72,6 @@ void	ft_write_16_chars(unsigned char *addr, int nchar)
 	c = addr;
 	index = 0;
 	c -= (nchar - 1);
-	write(1, " ", 1);
 	while ((index < nchar) && c <= addr)
 	{
 		if (*c < ' ' || *c > '~')
@@ -86,19 +84,6 @@ void	ft_write_16_chars(unsigned char *addr, int nchar)
 	write(1, "\n", 1);
 }
 
-void	ft_convert_char_to_int(unsigned char c, int index)
-{
-	long long	nb;
-
-	nb = 0;
-	while (nb < 256)
-	{
-		if (c == nb)
-			ft_putnbr16(nb, index, 1);
-		nb++;
-	}
-}
-
 void	*ft_print_memory(void *addr, unsigned int size)
 {
 	unsigned int	index;
@@ -108,11 +93,11 @@ void	*ft_print_memory(void *addr, unsigned int size)
 		return (addr);
 	index = 0;
 	c = (unsigned char *) addr;
-	while (index < size +1)
+	while (index < size)
 	{
 		ft_putnbr16((long long) c, -1, index % 16 == 0);
-		ft_convert_char_to_int(*c, index);
-		if (index == size)
+		ft_putnbr16((long long) *c, index, 1);
+		if (index == size - 1)
 		{
 			ft_handle_end(c, index);
 			break ;
@@ -124,3 +109,15 @@ void	*ft_print_memory(void *addr, unsigned int size)
 	}
 	return (addr);
 }
+
+/* int	main(void) */
+/* { */
+/* 	char	*a; */
+
+/* 	a = NULL; */
+/* 	a = "a"; */
+/* 	a = "0123456789abcdef"; */
+/* 	a = "Bonjour les aminches\t\n\tc\a est fou\ttout\tce qu on\ */
+/*  peut faire avec\t\n\tprint_memory\n\n\n\tlol.lol\n "; */
+/* 	ft_print_memory(a, 63); */
+/* } */

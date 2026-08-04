@@ -14,31 +14,13 @@
 #include <stdio.h>
 
 void	ft_putstr_non_printable(char *str);
-int		ft_str_is_printable(char *str);
-
-int		ft_convert_char_to_hex(char c);
-
-short int	ft_convert_char_to_int(char c)
-{
-	short int	i_char;
-
-	i_char = 0;
-	while (i_char < 256)
-	{
-		if (c == i_char)
-			return (i_char);
-		i_char++;
-	}
-	return (-1);
-}
-
 void	ft_write_int_as_hexa(short int num);
 
 void	ft_write_int_as_hexa(short int num)
 {
-	char	c;
-	int		div;
-	int		mod;
+	unsigned char	c;
+	int				div;
+	int				mod;
 
 	if (num > 256)
 		return ;
@@ -67,7 +49,7 @@ void	ft_putstr_non_printable(char *str)
 	{
 		if (str[index] < ' ' || str[index] > '~')
 		{
-			itohex = ft_convert_char_to_int(str[index]);
+			itohex = (unsigned char) str[index];
 			ft_write_int_as_hexa(itohex);
 		}
 		else
@@ -78,12 +60,13 @@ void	ft_putstr_non_printable(char *str)
 
 /* int	main(void) */
 /* { */
-/* 	char	src [] = "H\bello\\ \a\nSa\trg\ved\177 as!"; */
+/* 	char	*src; */
 
+/* 	src = "H\bello\\  \a\nSa\trg\ved\xff as!"; */
 /* 	printf("src  is [%s]\n", src); */
 /* 	printf("updated is:\n"); */
 /* 	ft_putstr_non_printable(src); */
 /* 	printf("\n"); */
-/* 	printf("H\\08ello\\ \\07\\0aSa\\09rg\\0bed\\7f as!"); */
+/* 	printf("H\\08ello\\  \\07\\0aSa\\09rg\\0bed\\ff as!"); */
 /* 	return (0); */
 /* } */

@@ -12,6 +12,22 @@
 #include <stdio.h>
 
 unsigned int	ft_strlcpy(char *dest, const char *src, unsigned int size);
+unsigned int	ft_strlen(char *str);
+
+unsigned int	ft_strlen(char *str)
+{
+	char			*index_char;
+	unsigned int	count_chars;
+
+	index_char = str;
+	count_chars = 0;
+	while (*index_char > 0)
+	{
+		count_chars++;
+		index_char++;
+	}
+	return (count_chars);
+}
 
 unsigned int	ft_strlcpy(char *dest, const char *src, unsigned int size)
 {
@@ -20,7 +36,7 @@ unsigned int	ft_strlcpy(char *dest, const char *src, unsigned int size)
 
 	index = 0;
 	ret_size = 0;
-	while (index < size - 1 && src[index] != '\0')
+	while (index + 1 < size && src[index] != '\0')
 	{
 		dest[index] = src[index];
 		ret_size++;
@@ -33,18 +49,23 @@ unsigned int	ft_strlcpy(char *dest, const char *src, unsigned int size)
 	return (ret_size);
 }
 
-/* #include     <stdio.h> */
+/* #include <stdio.h> */
+/* #include <string.h> */
+/* #include <bsd/bsd.h> */
+/* /\* requires additional flag: -lbsd in order to work *\/ */
 /* int	main(void) */
 /* { */
-/* 	char	*src = "Hello Sargedas!"; */
-/* 	char	dest[20]; */
+/* 	char	*src = "hello"; */
+/* 	char	dest[] = "A"; */
 /* 	unsigned int n; */
 /* 	unsigned int src_size; */
-/* 	n=10; */
-/* 	src_size = ft_strlcpy(dest,src,n); */
-/* 	/\* src_size = strlcpy(dest,src,n); *\/ */
+/* 	n=1; */
+/* 	src_size = strlcpy(dest,src,n); */
 /* 	printf("src  is [%s]\n",src); */
 /* 	printf("dest is [%s]\n",dest); */
-/* 	printf("src size is [%d]\n",src_size); */
+/* 	printf("src size is [%d] (strlcpy)\n\n",src_size); */
+/* 	src_size = ft_strlcpy(dest,src,n); */
+/* 	printf("dest is [%s]\n",dest); */
+/* 	printf("src size is [%d] (mine)\n",src_size); */
 /* 	return (0); */
 /* } */

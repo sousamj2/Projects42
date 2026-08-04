@@ -17,7 +17,7 @@ int	ft_str_is_printable(char *str)
 	int	index;
 
 	if (!str)
-		return (-1);
+		return (0);
 	index = 0;
 	while (str[index] != '\0')
 	{
@@ -27,7 +27,6 @@ int	ft_str_is_printable(char *str)
 	}
 	return (1);
 }
-
 
 /* #include <stdio.h> */
 /* int	main(void) */

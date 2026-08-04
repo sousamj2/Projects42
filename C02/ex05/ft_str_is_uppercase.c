@@ -17,7 +17,7 @@ int	ft_str_is_uppercase(char *str)
 	int	index;
 
 	if (!str)
-		return (-1);
+		return (0);
 	index = 0;
 	while (str[index] != '\0')
 	{

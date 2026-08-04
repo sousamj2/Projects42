@@ -17,13 +17,13 @@ int	ft_str_is_alpha(char *str)
 	int	index;
 
 	if (!str)
-		return (-1);
+		return (0);
 	index = 0;
 	while (str[index] != '\0')
 	{
 		if (str[index] < 'A'
 			|| str[index] > 'z'
-			|| ('a' < str[index] && str[index] < 'Z'))
+			|| (str[index] < 'a' && str[index] > 'Z'))
 			return (0);
 		index++;
 	}
