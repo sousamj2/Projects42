@@ -12,53 +12,50 @@
 
 #include <stdio.h>
 #include <string.h>
-/*
-1. same lenght
-2. str smaller
-3. to_find smaller (default)
- */
 
 char	*ft_strstr(char *str, char *to_find);
 
 char	*ft_strstr(char *str, char *to_find)
 {
-	char	*ptr;
 	int		index;
 
-	if (*str == '\0' && *to_find == '\0')
+	if (!to_find || !str)
+		return (NULL);
+	if (*to_find == '\0')
 		return (str);
-	ptr = to_find;
 	index = 0;
 	while (*str != '\0')
 	{
-		if (*str == *ptr)
+		if (*str == *to_find)
 		{
-			ptr++;
+			to_find++;
 			index++;
 		}
 		else
 		{
-			ptr = to_find;
+			to_find -= index;
 			index = 0;
 		}
-		if (*ptr == '\0')
-			return (str -= index);
+		if (*to_find == '\0')
+			return (str - index + 1);
 		str++;
 	}
 	return (NULL);
 }
 
-/* int	main(void) */
-/* { */
-/* 	char	*str = "as"; */
-/* 	char	*to_find = ""; */
-/* 	char *response = ""; */
+/*
+int	main(void)
+{
+	char	*str = "that atest find me here";
+	char	*to_find = "test";
+	char *response = "";
 
-/* 	printf("str is [%s]\n", str); */
-/* 	printf("search is [%s]\n", to_find); */
-/* 	response = strstr(str, to_find); */
-/* 	printf("Found at [%s] (strstr)\n",response); */
-/* 	response = ft_strstr(str, to_find); */
-/* 	printf("Found at [%s] (mine)\n", response); */
-/* 	return (0); */
-/* } */
+	printf("str is [%s]\n", str);
+	printf("search is [%s]\n", to_find);
+	response = ft_strstr(str, to_find);
+	printf("Found at [%s] (mine)\n", response);
+	response = strstr(str, to_find);
+	printf("Found at [%s] (strstr)\n",response);
+	return (0);
+}
+//*/
