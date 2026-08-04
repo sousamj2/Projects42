@@ -10,4 +10,59 @@
 /*                                                                            */
 /* ************************************************************************** */
 
+int		ft_atoi(char *str);
+char	*ft_signcheck(char *str, int *signal);
+int		ft_get_power_base(int digits, int base);
 
+int	ft_get_power_base(int digits, int base)
+{
+	int	index;
+	int	power;
+
+	power = 1;
+	index = 0;
+	while (index < digits)
+	{
+		power *= base;
+	}
+}
+
+char	*ft_signcheck(char *str, int *signal)
+{
+	*signal = 1;
+	while (*str == '+' || *str == '-')
+	{
+		if (*str == '-')
+			(*signal) *= -1;
+		str++;
+	}
+	return (str);
+}
+
+int	ft_atoi(char *str)
+{
+	int	signal;
+	int	digits;
+	int	value;
+	int	power;
+
+	digits = 0;
+	value = 0;
+	while (*str == ' ' || *str == '\t' || *str == '\n')
+		str++;
+	str = ft_signcheck(str, &index);
+	while (*str != '\0' || *str >= '0' && *str <= '9')
+	{
+		digits++;
+		str++;
+	}
+	power = ft_get_power_base(digits, 10);
+	str -= digits;
+	while (*str != '\0' || *str >= '0' && *str <= '9')
+	{
+		value += ((int)(*str - '0')) * power;
+		power /= 10;
+		str++;
+	}
+	return (signal * value);
+}
