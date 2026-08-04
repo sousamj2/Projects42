@@ -18,10 +18,8 @@ int		ft_strlen(char *str);
 
 int	ft_strlen(char *str)
 {
-	char	*c;
 	int		index;
 
-	c = str;
 	index = 0;
 	while (*str != '\0')
 	{
