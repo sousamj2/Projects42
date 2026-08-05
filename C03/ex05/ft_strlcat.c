@@ -12,6 +12,9 @@
 
 unsigned int	ft_strlcat(char *dest, char *src, unsigned int size);
 int				ft_strlen(char *str);
+void			iterate_strings(char **dest, char **src, int option);
+void			iterate_pointers(unsigned int *index,
+					unsigned int *retval, int option);
 
 int	ft_strlen(char *str)
 {
@@ -28,6 +31,28 @@ int	ft_strlen(char *str)
 	return (count_chars);
 }
 
+void	iterate_pointers(unsigned int *index, unsigned int *retval, int option)
+{
+	if (!option)
+	{
+		(*index)++;
+		(*retval)++;
+	}
+	else
+		(*index)++;
+}
+
+void	iterate_strings(char **dest, char **src, int option)
+{
+	if (!option)
+		(*dest)++;
+	else
+	{
+		(*dest)++;
+		(*src)++;
+	}
+}
+
 unsigned int	ft_strlcat(char *dest, char *src, unsigned int size)
 {
 	unsigned int	index;
@@ -39,19 +64,21 @@ unsigned int	ft_strlcat(char *dest, char *src, unsigned int size)
 	{
 		if (index == size)
 			return (retval);
-		index++;
-		dest++;
-		retval++;
+		iterate_pointers(&index, &retval, 0);
+		iterate_strings(&dest, &src, 0);
 	}
 	while (*src != '\0')
 	{
 		if (index +1 < size)
 			*dest = *src;
-		src++;
-		dest++;
-		index++;
+		else
+		{
+			*dest = '\0';
+			break ;
+		}
+		iterate_strings(&dest, &src, 1);
+		iterate_pointers(&index, &retval, 1);
 	}
-	*dest = '\0';
 	return (retval);
 }
 
@@ -63,7 +90,7 @@ unsigned int	ft_strlcat(char *dest, char *src, unsigned int size)
 int	main(void)
 {
 	char	src_1[] = "yyyy";
-	char	dest_1[20] = "x";
+	char	dest_1[2] = "x";
 	unsigned int n;
 	unsigned int src_size;
 	n=2;
@@ -74,7 +101,7 @@ int	main(void)
 	printf("src size is [%d] (strlcat)\n\n",src_size);
 
 	char	*src_2 = "yyyy";
-	char	dest_2[20] = "x";
+	char	dest_2[2] = "x";
 	printf("src  is [%s]\n",src_2);
 	src_size = ft_strlcat(dest_2,src_2,n);
 	printf("dest is [%s]\n",dest_2);
