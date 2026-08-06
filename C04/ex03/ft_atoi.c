@@ -20,15 +20,14 @@ int	ft_get_power_base(int digits, int base)
 	int	index;
 	int	power;
 
-	power = base;
+	power = 1;
 	index = 0;
 	while (index < digits - 1)
 	{
 		power *= base;
 		index++;
-		printf("power [%d] base [%d] index [%d]\n", power, base, index);
 	}
-	return (power/base);
+	return (power);
 }
 
 char	*ft_signcheck(char *str, int *signal)
@@ -65,14 +64,14 @@ int	ft_atoi(char *str)
 	while (*str != '\0' && (*str >= '0' && *str <= '9'))
 	{
 		value += ((int)(*str - '0')) * power;
-		printf("[%c] %d %d\n", *str, power, value);
 		power /= 10;
 		str++;
 	}
-
 	return (signal * value);
 }
 
-int main(){
-	printf("Number 2147483647 is [%d]\n", ft_atoi("2147483647"));
-}
+/* int	main(void) */
+/* { */
+/* 	printf("Number 2147483647 is [%d]\n", ft_atoi("-2147483647")); */
+/* 	return (0); */
+/* } */
