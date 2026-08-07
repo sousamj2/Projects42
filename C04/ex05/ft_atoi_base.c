@@ -26,7 +26,6 @@ char	*ft_signcheck(char *str, int *signal)
 			(*signal) *= -1;
 		str++;
 	}
-	//printf("signal = [%d]\n", *signal);
 	return (str);
 }
 
@@ -41,14 +40,12 @@ int	ft_digit(char *c, char *base)
 	{
 		if (*c == *base)
 		{
-			//printf("c [%c]: %s, base [%c]: %s, iter: %d\n", c[0],c,base[0],base,iter);
 			retval = iter;
 			break ;
 		}
 		base++;
 		iter++;
 	}
-	
 	return (retval);
 }
 
@@ -113,7 +110,7 @@ int	ft_atoi_base(char *str, char *base)
 
 /* 	input = "A"; */
 /* 	base = "0123456789A"; */
-	
+
 /* 	/\* if (argc != 1 && argc != 3) *\/ */
 /* 	/\* 	return (1); *\/ */
 /* 	/\* if (argc != 3) *\/ */
@@ -122,6 +119,7 @@ int	ft_atoi_base(char *str, char *base)
 /* 	/\* 	base = argv[2]; *\/ */
 /* 	/\* } *\/ */
 /* 	value = ft_atoi_base(input, base); */
-/* 	printf("With base [%s], the input [%s] give the integer [%d]\n",base,input,value); */
+/* printf("With base [%s], the input [%s] give the integer [%d]\n", */
+/* 	   base,input,value); */
 /* 	return (0); */
 /* } */

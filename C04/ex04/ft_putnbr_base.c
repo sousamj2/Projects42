@@ -14,7 +14,7 @@
 #include <stdio.h>
 
 void	ft_putnbr_base(int nb, char *base);
-int		ft_get_base_number(int nb, char *base);
+int		ft_get_base_number(int nb, char *base, int base_n);
 int		ft_get_power_max(int *nb, int base_n, int *limit);
 void	ft_get_string(int nb, int *params, char *base, char *snumber);
 void	ft_add_one(char *snumber, char *base, char *max_base);
@@ -91,14 +91,12 @@ int	ft_get_power_max(int *nb, int base_n, int *limit)
 	return ((int) pow_n);
 }
 
-int	ft_get_base_number(int nb, char *base)
+int	ft_get_base_number(int nb, char *base, int base_n)
 {
 	char	*pt_n;
-	int		base_n;
 
 	if (!base || *base == '\0')
 		return (0);
-	base_n = 1;
 	while (*(base + 1) != '\0')
 	{
 		pt_n = base + 1;
@@ -129,7 +127,7 @@ void	ft_putnbr_base(int nb, char *base)
 	char	*snumber;
 
 	snumber = mystring;
-	params[0] = ft_get_base_number(nb, base);
+	params[0] = ft_get_base_number(nb, base, 1);
 	if (!params[0])
 		return ;
 	params[2] = ft_get_power_max(&nb, params[0], &params[1]);
