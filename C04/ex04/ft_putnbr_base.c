@@ -96,6 +96,8 @@ int	ft_get_base_number(int nb, char *base)
 	char	*pt_n;
 	int		base_n;
 
+	if (!base || *base == '\0')
+		return (0);
 	base_n = 1;
 	while (*(base + 1) != '\0')
 	{
