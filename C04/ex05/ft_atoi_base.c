@@ -16,6 +16,13 @@ int		ft_get_base_number(char *base);
 int		ft_atoi_base(char *str, char *base);
 int		ft_digit(char *c, char *base);
 char	*ft_signcheck(char *str, int *signal);
+int		ft_isspace(char *c);
+
+int	ft_isspace(char *c)
+{
+	return (*c == ' ' || *c == '\f' || *c == '\n'
+		|| *c == '\r' || *c == '\t' || *c == '\v');
+}
 
 char	*ft_signcheck(char *str, int *signal)
 {
@@ -83,7 +90,7 @@ int	ft_atoi_base(char *str, char *base)
 	int	base_n;
 
 	value = 0;
-	while (*str == ' ' || *str == '\t' || *str == '\n')
+	while (ft_isspace(str))
 		str++;
 	str = ft_signcheck(str, &signal);
 	base_n = ft_get_base_number(base);

@@ -14,6 +14,13 @@
 int		ft_atoi(char *str);
 char	*ft_signcheck(char *str, int *signal);
 int		ft_get_power_base(int digits, int base);
+int		ft_isspace(char *c);
+
+int	ft_isspace(char *c)
+{
+	return (*c == ' ' || *c == '\f' || *c == '\n'
+		|| *c == '\r' || *c == '\t' || *c == '\v');
+}
 
 int	ft_get_power_base(int digits, int base)
 {
@@ -51,7 +58,7 @@ int	ft_atoi(char *str)
 
 	digits = 0;
 	value = 0;
-	while (*str == ' ' || *str == '\t' || *str == '\n')
+	while (ft_isspace(str))
 		str++;
 	str = ft_signcheck(str, &signal);
 	while (*str != '\0' && (*str >= '0' && *str <= '9'))
