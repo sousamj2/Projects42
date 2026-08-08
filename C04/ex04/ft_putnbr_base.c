@@ -69,11 +69,9 @@ int	ft_get_power_max(int *nb, int base_n, int *limit)
 	*limit = 0;
 	if (*nb == -2147483648)
 	{
-		*limit = 2;
+		*limit = 1;
 		(*nb)++;
 	}
-	if (*nb == 0)
-		*limit = 1;
 	if (*nb < 0)
 	{
 		write(1, "-", 1);
@@ -122,7 +120,7 @@ int	ft_get_base_number(int nb, char *base, int base_n)
 
 void	ft_putnbr_base(int nb, char *base)
 {
-	int		params [4];
+	int		params [3];
 	char	mystring[34];
 	char	*snumber;
 
@@ -131,13 +129,8 @@ void	ft_putnbr_base(int nb, char *base)
 	if (!params[0])
 		return ;
 	params[2] = ft_get_power_max(&nb, params[0], &params[1]);
-	if (params[1] == 1)
-	{
-		write(1, base, 1);
-		return ;
-	}
 	ft_get_string(nb, params, base, snumber);
-	if (params[1] == 2)
+	if (params[1] == 1)
 		ft_add_one(snumber, base, (base + params[0] -1));
 	while (*snumber == base[0])
 		snumber++;
