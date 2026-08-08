@@ -19,7 +19,7 @@ int	ft_strlen(char *str)
 
 	index_char = str;
 	count_chars = 0;
-	while (*index_char > 0)
+	while (*index_char != '\0')
 	{
 		count_chars++;
 		index_char++;
