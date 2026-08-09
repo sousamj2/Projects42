@@ -32,10 +32,10 @@ void	ft_putstr(char *str)
 	}
 }
 
-int	main(void)
-{
-	char	*test_string;
+/* int	main(void) */
+/* { */
+/* 	char	*test_string; */
 
-	test_string = "Hello Sargedas!\n";
-	ft_putstr(test_string);
-}
+/* 	test_string = "Hello Sargedas!\n"; */
+/* 	ft_putstr(test_string); */
+/* } */
