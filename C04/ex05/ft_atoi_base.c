@@ -16,39 +16,6 @@ int		ft_get_base_number(char *base);
 int		ft_atoi_base(char *str, char *base);
 int		ft_digit(char *c, char *base);
 char	*ft_signcheck(char *str, int *signal);
-/* int		ft_isspace(char *c); */
-int		ft_limit_check(char *str, int signal, int digits, int check_space);
-
-int	ft_limit_check(char *str, int signal, int digits, int check_space)
-{
-	char	*test_min;
-	char	*test_max;
-
-	if (check_space)
-		return (*str == ' ' || *str == '\f' || *str == '\n'
-			|| *str == '\r' || *str == '\t' || *str == '\v');
-	if (digits < 19)
-		return (1);
-	test_min = "9223372036854775808";
-	test_max = "9223372036854775807";
-	while (*str != '\0')
-	{
-		if (signal > 0 && (*str > *test_max || digits > 19))
-			return (-1);
-		else if (signal < 0 && (*str > *test_min || digits > 19))
-			return (0);
-		str++;
-		test_max++;
-		test_min++;
-	}
-	return (1);
-}
-
-/* int	ft_isspace(char *c) */
-/* { */
-/* 	return (*c == ' ' || *c == '\f' || *c == '\n' */
-/* 		|| *c == '\r' || *c == '\t' || *c == '\v'); */
-/* } */
 
 char	*ft_signcheck(char *str, int *signal)
 {
@@ -110,13 +77,14 @@ int	ft_get_base_number(char *base)
 
 int	ft_atoi_base(char *str, char *base)
 {
-	int	signal;
-	int	value;
-	int	digit;
-	int	base_n;
+	long long	value;
+	int			signal;
+	int			digit;
+	int			base_n;
 
 	value = 0;
-	while (ft_limit_check(str, signal, digit, 1))
+	while ((*str == ' ' || *str == '\f' || *str == '\n'
+			|| *str == '\r' || *str == '\t' || *str == '\v'))
 		str++;
 	str = ft_signcheck(str, &signal);
 	base_n = ft_get_base_number(base);
@@ -131,26 +99,26 @@ int	ft_atoi_base(char *str, char *base)
 		value += digit;
 		str++;
 	}
-	return (signal * value);
+	return ((int)(signal * value));
 }
 
-/* //int	main(int argc, char *argv[]) */
-/* int	main(void) */
+/* int	main(int argc, char *argv[]) */
+/* //int	main(void) */
 /* { */
 /* 	char *input; */
 /* 	char *base; */
 /* 	int value; */
 
-/* 	input = "10"; */
-/* 	base = "0123456789A"; */
+/* 	input = "\r\v  \t \f \n mario"; */
+/* 	base = "qwertyuiopasdfghjklzxcvbnm1234567890"; */
 
-/* 	/\* if (argc != 1 && argc != 3) *\/ */
-/* 	/\* 	return (1); *\/ */
-/* 	/\* if (argc != 3) *\/ */
-/* 	/\* { *\/ */
-/* 	/\* 	input = argv[1]; *\/ */
-/* 	/\* 	base = argv[2]; *\/ */
-/* 	/\* } *\/ */
+/* 	if (argc != 1 && argc != 3) */
+/* 		return (1); */
+/* 	if (argc == 3) */
+/* 	{ */
+/* 		input = argv[1]; */
+/* 		base = argv[2]; */
+/* 	} */
 /* 	value = ft_atoi_base(input, base); */
 /* printf("With base [%s], the input [%s] give the integer [%d]\n", */
 /* 	   base,input,value); */
