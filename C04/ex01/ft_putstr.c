@@ -25,17 +25,17 @@ void	ft_putstr(char *str)
 	char	*index_c;
 
 	index_c = str;
-	while (*index_c > 0)
+	while (*index_c > '\0')
 	{
 		ft_putchar(*index_c);
 		index_c++;
 	}
 }
 
-/* int	main(void) */
-/* { */
-/* 	char	*test_string; */
+int	main(void)
+{
+	char	*test_string;
 
-/* 	test_string = "Hello Sargedas!\n"; */
-/* 	ft_putstr(test_string); */
-/* } */
+	test_string = "Hello Sargedas!\n";
+	ft_putstr(test_string);
+}

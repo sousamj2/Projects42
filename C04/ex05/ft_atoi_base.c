@@ -16,13 +16,39 @@ int		ft_get_base_number(char *base);
 int		ft_atoi_base(char *str, char *base);
 int		ft_digit(char *c, char *base);
 char	*ft_signcheck(char *str, int *signal);
-int		ft_isspace(char *c);
+/* int		ft_isspace(char *c); */
+int		ft_limit_check(char *str, int signal, int digits, int check_space);
 
-int	ft_isspace(char *c)
+int	ft_limit_check(char *str, int signal, int digits, int check_space)
 {
-	return (*c == ' ' || *c == '\f' || *c == '\n'
-		|| *c == '\r' || *c == '\t' || *c == '\v');
+	char	*test_min;
+	char	*test_max;
+
+	if (check_space)
+		return (*str == ' ' || *str == '\f' || *str == '\n'
+			|| *str == '\r' || *str == '\t' || *str == '\v');
+	if (digits < 19)
+		return (1);
+	test_min = "9223372036854775808";
+	test_max = "9223372036854775807";
+	while (*str != '\0')
+	{
+		if (signal > 0 && (*str > *test_max || digits > 19))
+			return (-1);
+		else if (signal < 0 && (*str > *test_min || digits > 19))
+			return (0);
+		str++;
+		test_max++;
+		test_min++;
+	}
+	return (1);
 }
+
+/* int	ft_isspace(char *c) */
+/* { */
+/* 	return (*c == ' ' || *c == '\f' || *c == '\n' */
+/* 		|| *c == '\r' || *c == '\t' || *c == '\v'); */
+/* } */
 
 char	*ft_signcheck(char *str, int *signal)
 {
@@ -90,7 +116,7 @@ int	ft_atoi_base(char *str, char *base)
 	int	base_n;
 
 	value = 0;
-	while (ft_isspace(str))
+	while (ft_limit_check(str, signal, digit, 1))
 		str++;
 	str = ft_signcheck(str, &signal);
 	base_n = ft_get_base_number(base);
@@ -115,7 +141,7 @@ int	ft_atoi_base(char *str, char *base)
 /* 	char *base; */
 /* 	int value; */
 
-/* 	input = "A"; */
+/* 	input = "10"; */
 /* 	base = "0123456789A"; */
 
 /* 	/\* if (argc != 1 && argc != 3) *\/ */

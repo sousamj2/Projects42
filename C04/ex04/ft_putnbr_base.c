@@ -146,11 +146,10 @@ void	ft_putnbr_base(int nb, char *base)
 /* { */
 /* 	ft_putnbr_base(-2147483648, "01"); */
 /* 	printf("<---- \n"); */
-
-/* 	return(0); */
-
 /* 	ft_putnbr_base(-42, "01 2"); */
-/* 	/\* ft_putnbr_base(-2147483648, "01234567"); *\/ */
+/* 	printf("\n"); */
+/* 	ft_putnbr_base(-2147483648, "poneyvif"); */
+/* 	printf("\n"); */
 /* 	ft_putnbr_base(00, "01"); */
 /* 	printf(" <---- \n"); */
 /* 	printf("\n"); */
