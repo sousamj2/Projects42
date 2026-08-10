@@ -11,39 +11,39 @@
 /* ************************************************************************** */
 
 int	ft_is_prime(int nb);
-int	ft_sqrt(int nb);
-
-int	ft_perfect_square(int sqrt, int nb);
-int	ft_perfect_square(int sqrt, int nb)
-{
-	if (sqrt * sqrt < 0)
-		return (0);
-	if (sqrt * sqrt == nb)
-		return (sqrt);
-	return (ft_perfect_square(sqrt + 1, nb));
-}
-
-int	ft_sqrt(int nb)
-{
-	if (nb < 0)
-		return (0);
-	if (nb == 0 || nb == 1)
-		return (nb);
-	return (ft_perfect_square(2, nb));
-}
-
-
+int	ft_check_mod(long nb, long div, long max);
 
 int	ft_is_prime(int nb)
 {
-	int test;
-	
+	long	max;
+
 	if (nb < 2)
 		return (0);
-	test = 2;
-	while (test*test < nb)
-	{
-		
-	}
+	if (nb == 2 || (nb < 9 && nb % 2 != 0))
+		return (1);
+	else if (nb % 2 == 0)
+		return (0);
+	max = 3;
+	while (max * max < (long) nb)
+		max += 2;
+	return (ft_check_mod(nb, 3, max));
 }
 
+int	ft_check_mod(long nb, long div, long max)
+{
+	if (nb % div == 0)
+		return (0);
+	if (div < max + 2 && !ft_check_mod(nb, div + 2, max))
+		return (0);
+	return (1);
+}
+
+/* #include <stdio.h> */
+/* #include <stdlib.h> */
+/* int main(int argc, char *argv[]) */
+/* { */
+/* 	int nb = 9; */
+/* 	if (argc != 1) */
+/* 		nb = atoi(argv[1]); */
+/* 	printf("Number %d is %sprime.\n", nb, ft_is_prime(nb) ? "" : "not "); */
+/* } */
