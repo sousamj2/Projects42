@@ -24,7 +24,7 @@ int	ft_find_next_prime(int nb)
 	if (nb == 2 || (nb < 9 && nb % 2 != 0))
 		return (nb);
 	else if (nb < 8 && nb % 2 == 0)
-		return (nb+1);
+		return (nb + 1);
 	max = 2;
 	while (max * max < (long) nb)
 		max += 2;
@@ -32,7 +32,7 @@ int	ft_find_next_prime(int nb)
 	{
 		if (nb % 2 == 0)
 			nb--;
-		nb +=2;
+		nb += 2;
 	}
 	return (nb);
 }
@@ -57,4 +57,3 @@ int	ft_check_mod(long nb, long div, long max)
 /* 		nb = atoi(argv[1]); */
 /* 	printf("Next prime of number %d is %d.\n", nb, ft_find_next_prime(nb)); */
 /* } */
-
