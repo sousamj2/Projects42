@@ -54,9 +54,7 @@ char	*ft_convert_base(char *nbr, char *base_from, char *base_to)
 	if (!ft_get_base_number(base_from) || !ft_get_base_number(base_to))
 		return (NULL);
 	number = ft_atoi_base(nbr, base_from);
-	printf("Number is [%ld].\n", number);
 	snumber = ft_putnbr_base(number, base_to);
-	//printf("Snumber is [%s].\n", snumber);
 	return (snumber);
 }
 
@@ -74,12 +72,8 @@ char	*ft_putnbr_base(long nb, char *base)
 	char	*retval;	
 
 	params[0] = ft_get_base_number(base);
-	if (!params[0])
-		return ("");
 	ft_get_power_max(&nb, params);
-	//printf("Params 0: %d, 1: %d, 2: %d, 3: %d\n", params[0], params[1], params[2], params[3]);
-	snumber = malloc((params[3]+1) * sizeof(char));
-	//printf("Size of snumber [%d] at position: [%p]\n",params[3] ,snumber);
+	snumber = malloc((params[3]) * sizeof(char));
 	retval = snumber;
 	if (params[2] == 0)
 	{
@@ -90,7 +84,6 @@ char	*ft_putnbr_base(long nb, char *base)
 	ft_get_string(nb, params, base, snumber);
 	return (retval);
 }
-
 
 int	ft_atoi_base(char *str, char *base)
 {
@@ -105,8 +98,6 @@ int	ft_atoi_base(char *str, char *base)
 		str++;
 	str = ft_signcheck(str, &signal);
 	base_n = ft_get_base_number(base);
-	if (! base_n)
-		return (0);
 	while (*str != '\0')
 	{
 		digit = ft_digit(str, base);

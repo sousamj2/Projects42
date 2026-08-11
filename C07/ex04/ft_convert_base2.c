@@ -9,7 +9,6 @@
 /*   Updated: 2026/08/10 13:58:26 by marisous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-#include <stdio.h>
 
 int		ft_get_base_number(char *base);
 char	*ft_signcheck(char *str, int *signal);
@@ -74,33 +73,27 @@ void	ft_get_string(long nb, int *params, char *base, char *snumber)
 {
 	int		digit;
 	long	pow_l;
-	
-	//printf("Params 0: %d, 1: %d, 2: %d\n", params[0], params[1], params[2]);
+
 	digit = 0;
 	if (params[1])
 	{
 		*snumber = '-';
-		*(snumber+1) = '\0';
+		*(snumber + 1) = '\0';
 		digit++;
 	}
 	pow_l = params[2];
-	if (params[2] < 0){
+	if (params[2] < 0)
+	{
 		params[2]--;
-		pow_l = 1 + ( (long) (params[2]) );
+		pow_l = 1 + ((long)(params[2]));
 	}
-	//printf("Params 0: %d, 1: %d, 2: %d, pow_l [%ld]\n", params[0], params[1], params[2], pow_l);
-
-	//printf("sign snumber [%s] and number is now [%ld]\n",snumber,nb);
 	while (pow_l > 0)
 	{
-		//printf("digit [%d] power [%ld] nb [%ld] index [%ld] \n", digit, pow_l, nb, nb / pow_l);
-		//printf("bef snumber [%s]\n",snumber);
 		snumber[digit] = base[nb / pow_l];
 		nb = nb % pow_l;
 		pow_l /= params[0];
 		digit++;
 		snumber[digit] = '\0';
-		//printf("aft snumber [%s]\n",snumber);
 	}
 }
 
@@ -114,7 +107,7 @@ void	ft_get_power_max(long *nb, int *params)
 	long	pow_n;
 
 	params[1] = 0;
-	params[3] = 2;
+	params[3] = 1;
 	if (*nb < 0)
 	{
 		params[1] = 1 ;
@@ -129,8 +122,10 @@ void	ft_get_power_max(long *nb, int *params)
 		pow_n *= params[0];
 		params[3]++;
 	}
-	if (*nb != pow_n)
+	if (*nb != pow_n && *nb != 0)
 		pow_n /= params[0];
+	else
+		params[3]++;
 	params[2] = (int) pow_n;
 }
 
