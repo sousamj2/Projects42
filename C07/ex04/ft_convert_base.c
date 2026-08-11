@@ -14,8 +14,8 @@
 
 int		ft_get_base_number(char *base);
 char	*ft_signcheck(char *str, int *signal);
-void	ft_get_string(int nb, int *params, char *base, char *snumber);
-int		ft_get_power_max(long *nb, int base_n, int *limit);
+void	ft_get_string(long nb, int *params, char *base, char *snumber);
+int		ft_get_power_max(long *nb, int *params);
 int		ft_digit(char *c, char *base);
 int		ft_atoi_base(char *str, char *base);
 char	*ft_putnbr_base(long nb, char *base);
@@ -32,8 +32,7 @@ int main(int argn, char *argv[])
 	 nbr = "-2147483648";
 	 base_from = "0123456789";
 	 base_to = "0123456789abcdef";
-	 nbr = "0";
-	 base_from = "0123456789";
+	 /* base_from = "0123456789"; */
 	 base_to = "01";
 	 if (argn == 4)
 	{
@@ -55,9 +54,43 @@ char	*ft_convert_base(char *nbr, char *base_from, char *base_to)
 	if (!ft_get_base_number(base_from) || !ft_get_base_number(base_to))
 		return (NULL);
 	number = ft_atoi_base(nbr, base_from);
+	//printf("Number is [%ld].\n", number);
 	snumber = ft_putnbr_base(number, base_to);
+	//printf("Snumber is [%s].\n", snumber);
 	return (snumber);
 }
+
+/**
+   params[0] is base_n how many chars does the base has.
+   params[1] is negative: say if number is negative (1) or positive (0)
+   params[2] is power: what is the value of the max base_n power not above nb
+   params[3] is how many digits will the number have: include sign '-' and '\0'.
+ */
+
+char	*ft_putnbr_base(long nb, char *base)
+{
+	int		params [4];
+	char	*snumber;
+	char	*retval;	
+
+	params[0] = ft_get_base_number(base);
+	if (!params[0])
+		return ("");
+	ft_get_power_max(&nb, params);
+	//printf("Params 0: %d, 1: %d, 2: %d, 3: %d\n", params[0], params[1], params[2], params[3]);
+	snumber = malloc((params[3]) * sizeof(char));
+	//printf("Size of snumber [%d] at position: [%p]\n",params[3] ,snumber);
+	retval = snumber;
+	if (params[2] == 0)
+	{
+		*snumber = base[0];
+		*(snumber + 1) = '\0';
+		return (retval);
+	}
+	ft_get_string(nb, params, base, snumber);
+	return (retval);
+}
+
 
 int	ft_atoi_base(char *str, char *base)
 {
@@ -84,25 +117,4 @@ int	ft_atoi_base(char *str, char *base)
 		str++;
 	}
 	return ((int)(signal * value));
-}
-
-char	*ft_putnbr_base(long nb, char *base)
-{
-	int		params [3];
-	char	*snumber;
-	char	*retval;	
-
-	params[0] = ft_get_base_number(base);
-	if (!params[0])
-		return ("\0");
-	params[2] = ft_get_power_max(&nb, params[0], &params[1]);
-	snumber = malloc(params[1] + params[2] + 1);
-	retval = snumber;
-	ft_get_string(nb, params, base, snumber);
-	if (params[1])
-	{
-		snumber[0] = '-';
-		snumber++;
-	}
-	return (retval);
 }

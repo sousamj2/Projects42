@@ -9,11 +9,12 @@
 /*   Updated: 2026/08/10 13:58:26 by marisous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+#include <stdio.h>
 
 int		ft_get_base_number(char *base);
 char	*ft_signcheck(char *str, int *signal);
-void	ft_get_string(int nb, int *params, char *base, char *snumber);
-int		ft_get_power_max(long *nb, int base_n, int *limit);
+void	ft_get_string(long nb, int *params, char *base, char *snumber);
+void	ft_get_power_max(long *nb, int *params);
 int		ft_digit(char *c, char *base);
 
 /**
@@ -69,23 +70,28 @@ char	*ft_signcheck(char *str, int *signal)
    to the snumber string. The two params in use are the maximum
    power of the base and its lenght.
  */
-void	ft_get_string(int nb, int *params, char *base, char *snumber)
+void	ft_get_string(long nb, int *params, char *base, char *snumber)
 {
 	int		digit;
-
+	//printf("Params 0: %d, 1: %d, 2: %d\n", params[0], params[1], params[2]);
 	digit = 0;
 	if (params[1])
 	{
-		snumber[0] = '-';
+		*snumber = '-';
+		*(snumber+1) = '\0';
 		digit++;
 	}
+	//printf("sign snumber [%s] and number is now [%ld]\n",snumber,nb);
 	while (params[2] > 0)
 	{
+		//printf("digit [%d] power [%d] nb [%ld] index [%ld] \n", digit, params[2], nb, nb / params[2]);
+		//printf("bef snumber [%s]\n",snumber);
 		snumber[digit] = base[nb / params[2]];
 		nb = nb % params[2];
 		params[2] /= params[0];
 		digit++;
 		snumber[digit] = '\0';
+		//printf("aft snumber [%s]\n",snumber);
 	}
 }
 
@@ -94,25 +100,29 @@ void	ft_get_string(int nb, int *params, char *base, char *snumber)
    It inverts the number if negative and saves the signal.
    The function returns the power that is calculated.
  */
-int	ft_get_power_max(long *nb, int base_n, int *negative)
+void	ft_get_power_max(long *nb, int *params)
 {
 	long	pow_n;
 
-	*negative = 0 ;
+	params[1] = 0;
+	params[3] = 2;
 	if (*nb < 0)
 	{
-		*negative = 1 ;
+		params[1] = 1 ;
 		(*nb) = - (*nb);
 	}
+	params[3] += params[1];
 	pow_n = 1;
 	while (pow_n < (long) *nb)
 	{
 		if ((int) pow_n != pow_n)
 			break ;
-		pow_n *= base_n;
+		pow_n *= params[0];
+		params[3]++;
 	}
-	pow_n /= base_n;
-	return ((int) pow_n);
+	if (*nb != pow_n)
+		pow_n /= params[0];
+	params[2] = (int) pow_n;
 }
 
 /**
