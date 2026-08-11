@@ -73,6 +73,8 @@ char	*ft_signcheck(char *str, int *signal)
 void	ft_get_string(long nb, int *params, char *base, char *snumber)
 {
 	int		digit;
+	long	pow_l;
+	
 	//printf("Params 0: %d, 1: %d, 2: %d\n", params[0], params[1], params[2]);
 	digit = 0;
 	if (params[1])
@@ -81,14 +83,21 @@ void	ft_get_string(long nb, int *params, char *base, char *snumber)
 		*(snumber+1) = '\0';
 		digit++;
 	}
+	pow_l = params[2];
+	if (params[2] < 0){
+		params[2]--;
+		pow_l = 1 + ( (long) (params[2]) );
+	}
+	//printf("Params 0: %d, 1: %d, 2: %d, pow_l [%ld]\n", params[0], params[1], params[2], pow_l);
+
 	//printf("sign snumber [%s] and number is now [%ld]\n",snumber,nb);
-	while (params[2] > 0)
+	while (pow_l > 0)
 	{
-		//printf("digit [%d] power [%d] nb [%ld] index [%ld] \n", digit, params[2], nb, nb / params[2]);
+		//printf("digit [%d] power [%ld] nb [%ld] index [%ld] \n", digit, pow_l, nb, nb / pow_l);
 		//printf("bef snumber [%s]\n",snumber);
-		snumber[digit] = base[nb / params[2]];
-		nb = nb % params[2];
-		params[2] /= params[0];
+		snumber[digit] = base[nb / pow_l];
+		nb = nb % pow_l;
+		pow_l /= params[0];
 		digit++;
 		snumber[digit] = '\0';
 		//printf("aft snumber [%s]\n",snumber);

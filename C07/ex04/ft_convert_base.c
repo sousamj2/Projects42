@@ -21,30 +21,30 @@ int		ft_atoi_base(char *str, char *base);
 char	*ft_putnbr_base(long nb, char *base);
 char	*ft_convert_base(char *nbr, char *base_from, char *base_to);
 
-#include <stdio.h>
-int main(int argn, char *argv[])
-{
-	char *nbr;
-	char *base_from;
-	char *base_to;
-	char *converted;
+/* #include <stdio.h> */
+/* int main(int argn, char *argv[]) */
+/* { */
+/* 	char *nbr; */
+/* 	char *base_from; */
+/* 	char *base_to; */
+/* 	char *converted; */
 
-	 nbr = "-2147483648";
-	 base_from = "0123456789";
-	 base_to = "0123456789abcdef";
-	 /* base_from = "0123456789"; */
-	 base_to = "01";
-	 if (argn == 4)
-	{
-		nbr = argv[1];
-		base_from = argv[2];
-		base_to = argv[3];
-	}
-	converted = ft_convert_base(nbr, base_from, base_to);
-	printf("Number [%s] with base [%s] converts to", nbr, base_from);
-	printf(" base [%s] as the number [%s].\n", base_to, converted);
-	return (0);
-}
+/* 	 nbr = "-2147483648"; */
+/* 	 base_from = "0123456789"; */
+/* 	 base_to = "0123456789abcdef"; */
+/* 	 /\* base_from = "0123456789"; *\/ */
+/* 	 base_to = "01"; */
+/* 	 if (argn == 4) */
+/* 	{ */
+/* 		nbr = argv[1]; */
+/* 		base_from = argv[2]; */
+/* 		base_to = argv[3]; */
+/* 	} */
+/* 	converted = ft_convert_base(nbr, base_from, base_to); */
+/* 	printf("Number [%s] with base [%s] converts to", nbr, base_from); */
+/* 	printf(" base [%s] as the number [%s].\n", base_to, converted); */
+/* 	return (0); */
+/* } */
 
 char	*ft_convert_base(char *nbr, char *base_from, char *base_to)
 {
@@ -54,7 +54,7 @@ char	*ft_convert_base(char *nbr, char *base_from, char *base_to)
 	if (!ft_get_base_number(base_from) || !ft_get_base_number(base_to))
 		return (NULL);
 	number = ft_atoi_base(nbr, base_from);
-	//printf("Number is [%ld].\n", number);
+	printf("Number is [%ld].\n", number);
 	snumber = ft_putnbr_base(number, base_to);
 	//printf("Snumber is [%s].\n", snumber);
 	return (snumber);
@@ -78,7 +78,7 @@ char	*ft_putnbr_base(long nb, char *base)
 		return ("");
 	ft_get_power_max(&nb, params);
 	//printf("Params 0: %d, 1: %d, 2: %d, 3: %d\n", params[0], params[1], params[2], params[3]);
-	snumber = malloc((params[3]) * sizeof(char));
+	snumber = malloc((params[3]+1) * sizeof(char));
 	//printf("Size of snumber [%d] at position: [%p]\n",params[3] ,snumber);
 	retval = snumber;
 	if (params[2] == 0)
