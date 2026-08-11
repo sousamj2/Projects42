@@ -111,8 +111,7 @@ int	ft_get_power_max(long *nb, int base_n, int *negative)
 			break ;
 		pow_n *= base_n;
 	}
-	if ((int) pow_n != pow_n)
-		pow_n /= base_n;
+	pow_n /= base_n;
 	return ((int) pow_n);
 }
 
