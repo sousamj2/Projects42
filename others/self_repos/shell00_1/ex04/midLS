@@ -1,0 +1,5 @@
+ls -tmp
+# -t to order by timestamp.
+# -m to separate with ', ' (comma-space).
+# -p to give a slash at the end of the directories.
+# -a would show also the hidden files (.*)

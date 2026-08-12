@@ -1,0 +1,14 @@
+#!/bin/bash
+# This optional config tells it is a bash file and helps emacs with the colors :)
+
+# Purpose of the script: emacs creates a backup file~ when you save from the previous save.
+# Additionally, it create lock files ( #file# ) that are auto-saved if the emacs crashes so you can recover the worked done.
+
+# find all files that match the patterns #*# *~
+# -print : show those files
+# -delete : remove those files
+find \#*\# *~ -print -delete
+
+# To test we can do  $ touch \#aa\# aa~ aa to create files before executing the command above.
+# It will remove the files \#aa\# and aa~ leaving aa untouched.
+
