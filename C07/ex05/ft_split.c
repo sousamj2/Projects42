@@ -66,6 +66,8 @@ int		ft_get_num_strings(char *str, char c)
 	
 	nstrings = 1;
 	is_new_word = 0;
+	if (!str || *str == '\0')
+		return (1);
 	while (*str != '\0')
 	{
 		if (!is_new_word && *str != c)
@@ -82,18 +84,17 @@ int		ft_get_num_strings(char *str, char c)
 
 int main(void)
 {
-	char *str = ",.another word. next, fim...";
-	char *charset = ".,";
-
+	char str[] = ""; //,.another word. next, fim...test";
+	char *charset = " ";
 	char ** result = ft_split(str,charset);
-
 	char * istring;
-
-	istring = *result;
-	while (istring != NULL)
+	while (1)
 	{
+		istring = *result;
+		if (istring == NULL)
+			break;
 		printf("Size of string [%s] is [%d]\n",istring, ft_strlen(istring));
-		(*istring)++;
+		result++;
 	}
 }
 
@@ -140,13 +141,15 @@ char * ft_get_next(char *str, char c, int *pos)
 		str++;
 		(*pos)++;
 	}
-	if (*str == '\0')
-	{
-		this_word = NULL;
-		return (str);
-	}
-	printf("size of word = [%d]\n", size_word);
+	/* if (*str == '\0') */
+	/* { */
+	/* 	//this_word = NULL; */
+	/* 	return (NULL); */
+	/* } */
+	//printf("size of word = [%d]\n", size_word);
 
+	if (! size_word)
+		return (NULL);
 	this_word = malloc((size_word +1)*sizeof(char));
 	str -= size_word;
 
@@ -157,6 +160,6 @@ char * ft_get_next(char *str, char c, int *pos)
 		str++;
 	}
 	this_word[index] = '\0';
-		printf("this word = [%s]\n", this_word);
+	//printf("this word = [%s]\n", this_word);
 	return (this_word);
 }
