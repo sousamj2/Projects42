@@ -1,3 +1,14 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   main.c                                             :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: marisous <marisous@student.42lisb...>      +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2026/08/17 08:54:56 by marisous          #+#    #+#             */
+/*   Updated: 2026/08/17 09:29:18 by marisous         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 #include "ft.h"
 
 int	main(int argc, char **argv)
@@ -18,7 +29,7 @@ int	main(int argc, char **argv)
 	if (fd < 0)
 		return (1);
 	bytes_read = 1;
-	while (bytes_read > 0 && total_cycles > 0)
+	while (bytes_read > 0)
 	{
 		bytes_read = ft_getstr(fd, string);
 		if (bytes_read > 0)

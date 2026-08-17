@@ -7,3 +7,14 @@ MakeFile:			https://www.youtube.com/watch?v=gtbmNNXcN3s
 
 More makefiles:			https://www.youtube.com/live/GExnnTaBELk
 More makefiles variables: 	https://www.youtube.com/watch?v=z4uPHjxYyPs
+
+
+Other documents:
+* Structures:
+https://medium.com/@adithyaravichandran11/the-ultimate-guide-to-structs-in-c-from-beginner-to-pro-b62157d21c73
+
+* Include guard
+https://en.wikipedia.org/wiki/Include_guard
+
+* C preprocessors and macros
+https://www.w3schools.com/c/c_macros.php
