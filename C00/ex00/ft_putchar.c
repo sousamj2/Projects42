@@ -6,12 +6,15 @@
 /*   By: marisous <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/23 13:55:21 by marisous          #+#    #+#             */
-/*   Updated: 2026/07/23 13:55:26 by marisous         ###   ########.fr       */
+/*   Updated: 2026/08/22 19:42:56 by marisous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <unistd.h>
 
+/**
+   This is the documentation.
+ */
 void	ft_putchar(char c);
 
 void	ft_putchar(char c)
@@ -20,8 +23,7 @@ void	ft_putchar(char c)
 	return ;
 }
 
-/* /\* Uncomment the following section in order to test the code *\/ */
-/* int	main(void) */
+/* int main(void) */
 /* { */
 /* 	ft_putchar('A'); */
 /* 	return (0); */

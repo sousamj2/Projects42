@@ -12,3 +12,4 @@ tests
 .cache
 *.a
 others/
+compile_commands.json
