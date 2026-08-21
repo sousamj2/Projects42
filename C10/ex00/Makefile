@@ -28,7 +28,11 @@ $(LIB_NAME) : $(OBJ_FILES)
 clean:
 	rm -fv $(OBJ_FILES)
 
-fclean:
+fclean: eclean
 	rm -fv $(LIB_NAME) $(PRG_NAME)
+
+eclean:
+	rm -fv compile_commands.json
+	bear -- make
 
 re: fclean all
