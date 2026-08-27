@@ -6,7 +6,7 @@
 /*   By: marisous <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/23 13:55:21 by marisous          #+#    #+#             */
-/*   Updated: 2026/08/23 19:00:00 by marisous         ###   ########.fr       */
+/*   Updated: 2026/08/27 21:24:37 by marisous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,6 @@ void	ft_putchar(char c)
 	write(1, &c, 1);
 	return ;
 }
-// test
 
 /* int main(void) */
 /* { */
