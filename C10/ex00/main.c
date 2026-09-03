@@ -6,7 +6,7 @@
 /*   By: marisous <marisous@student.42lisb...>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/08/17 08:54:56 by marisous          #+#    #+#             */
-/*   Updated: 2026/08/17 09:29:18 by marisous         ###   ########.fr       */
+/*   Updated: 2026/09/03 20:36:59 by marisous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "ft.h"
@@ -31,7 +31,7 @@ int	main(int argc, char **argv)
 	bytes_read = 1;
 	while (bytes_read > 0)
 	{
-		bytes_read = ft_getstr(fd, string);
+		bytes_read = ft_getstr(fd, string, BUFFER_SIZE);
 		if (bytes_read > 0)
 			ft_putstr(string, bytes_read);
 	}
