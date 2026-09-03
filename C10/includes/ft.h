@@ -17,12 +17,14 @@
 # include <stdio.h>
 # include <fcntl.h>
 
-unsigned char	ft_getchar(int fd, int *bytes_read);
-void			ft_putchar(unsigned char c, int fd);
-void			ft_putstr(unsigned char *str, int size);
-void			ft_puterr(char *str);
-int				ft_strcmp(unsigned char *s1, unsigned char *s2);
-void			ft_swap(int *a, int *b);
-int				ft_strlen(char *str);
-int				ft_getstr(int fd, unsigned char *string, int buffer_size);
+char	ft_getchar(int fd, int *bytes_read);
+void	ft_putchar(char c, int fd);
+void	ft_putstr(char *str, int size);
+void	ft_puterr(char *str);
+int		ft_strcmp(char *s1, char *s2);
+void	ft_swap(int *a, int *b);
+int		ft_strlen(char *str);
+int		ft_getstr(int fd, char *string, int buffer_size);
+char	*ft_parse(int argc, char *argv[], char *parse);
+int		ft_atoi(char * str);
 #endif
