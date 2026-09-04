@@ -6,7 +6,7 @@
 #    By: marisous <marisous@student.42lisb...>      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2026/09/03 18:37:33 by marisous          #+#    #+#              #
-#    Updated: 2026/09/03 22:28:23 by marisous         ###   ########.fr        #
+#    Updated: 2026/09/04 10:50:03 by marisous         ###   ########.fr        #
 #                                                                              #
 #******************************************************************************#
 
@@ -20,7 +20,11 @@ SRC_FILES = \
 	srcs/ft_getstr.c \
 	srcs/ft_puterr.c \
 	srcs/ft_putstr.c \
-	srcs/ft_strlen.c
+	srcs/ft_strlen.c \
+	srcs/ft_parse.c \
+	srcs/ft_atoi.c \
+	srcs/ft_getchar.c \
+	srcs/ft_strcmp.c
 
 OBJ_FILES = $(SRC_FILES:.c=.o)
 
@@ -44,5 +48,4 @@ clean:
 fclean:
 	rm -vf $(LIB_NAME) $(PRG_FILE)
 
-
-
+re: fclean all
