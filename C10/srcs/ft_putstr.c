@@ -12,7 +12,7 @@
 
 #include "ft.h"
 
-void	ft_putstr(unsigned char *str, int size)
+void	ft_putstr(char *str, int size)
 {
 	write (1, str, size);
 }

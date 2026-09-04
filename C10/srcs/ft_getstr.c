@@ -12,7 +12,7 @@
 
 #include "ft.h"
 
-int	ft_getstr(int fd, unsigned char *string, int buffer_size)
+int	ft_getstr(int fd, char *string, int buffer_size)
 {
 	int	bytes_read;
 

@@ -13,9 +13,9 @@
 #include <unistd.h>
 #include "ft.h"
 
-unsigned char	ft_getchar(int fd, int *bytes_read)
+char	ft_getchar(int fd, int *bytes_read)
 {
-	unsigned char	c;
+	char	c;
 
 	*bytes_read = read(fd, &c, 1);
 	return (c);
