@@ -16,6 +16,7 @@
 # include <unistd.h>
 # include <stdio.h>
 # include <fcntl.h>
+# include <string.h>
 
 char	ft_getchar(int fd, int *bytes_read);
 void	ft_putchar(char c, int fd);
@@ -26,5 +27,5 @@ void	ft_swap(int *a, int *b);
 int		ft_strlen(char *str);
 int		ft_getstr(int fd, char *string, int buffer_size);
 char	*ft_parse(int argc, char *argv[], char *parse);
-int		ft_atoi(char * str);
+int		ft_atoi(char *str);
 #endif
