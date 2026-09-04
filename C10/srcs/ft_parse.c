@@ -1,15 +1,26 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_parse.c                                         :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: marisous <marisous@student.42lisb...>      +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2026/09/04 11:46:20 by marisous          #+#    #+#             */
+/*   Updated: 2026/09/04 11:46:20 by marisous         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 #include "ft.h"
 
-unsigned char * ft_parse(int argc, unsigned char *argv[], unsigned char *parse)
+char	*ft_parse(int argc, char *argv[], char *parse)
 {
-    int iarg;
+	int	iarg;
 
-    iarg = 2;
-    while (iarg < argc-1)
-    {
-	if (ft_strcmp(argv[iarg],parse))
-	   return (argv[iarg+1]);
-	iarg++;
-    }
-    return ((unsigned char *) "");
+	iarg = 2;
+	while (iarg < argc - 1)
+	{
+		if (!ft_strcmp(argv[iarg], parse))
+			return (argv[iarg + 1]);
+		iarg++;
+	}
+	return ("");
 }
