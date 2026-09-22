@@ -6,16 +6,16 @@
 /*   By: marisous <marisous@student.42lisb...>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/08/17 08:54:56 by marisous          #+#    #+#             */
-/*   Updated: 2026/09/03 20:36:59 by marisous         ###   ########.fr       */
+/*   Updated: 2026/09/04 12:03:28 by marisous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "ft.h"
 
 int	main(int argc, char **argv)
 {
-	unsigned char	string[BUFFER_SIZE];
-	int				fd;
-	int				bytes_read;
+	char	string[BUFFER_SIZE];
+	int		fd;
+	int		bytes_read;
 
 	if (argc < 2)
 		ft_puterr("File name missing.\n");
