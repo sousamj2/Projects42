@@ -6,7 +6,7 @@
 /*   By: marisous <marisous@student.42lisb...>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/04 11:46:20 by marisous          #+#    #+#             */
-/*   Updated: 2026/09/04 11:46:20 by marisous         ###   ########.fr       */
+/*   Updated: 2026/09/04 14:07:41 by marisous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "ft.h"
@@ -15,7 +15,7 @@ char	*ft_parse(int argc, char *argv[], char *parse)
 {
 	int	iarg;
 
-	iarg = 2;
+	iarg = 0;
 	while (iarg < argc - 1)
 	{
 		if (!ft_strcmp(argv[iarg], parse))
