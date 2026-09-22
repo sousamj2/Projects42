@@ -6,7 +6,7 @@
 #    By: marisous <marisous@student.42lisb...>      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2026/09/03 18:37:33 by marisous          #+#    #+#              #
-#    Updated: 2026/09/04 10:50:03 by marisous         ###   ########.fr        #
+#    Updated: 2026/09/05 11:03:37 by marisous         ###   ########.fr        #
 #                                                                              #
 #******************************************************************************#
 
@@ -24,7 +24,9 @@ SRC_FILES = \
 	srcs/ft_parse.c \
 	srcs/ft_atoi.c \
 	srcs/ft_getchar.c \
-	srcs/ft_strcmp.c
+	srcs/ft_strcmp.c \
+	srcs/ft_process_file.c \
+	srcs/ft_malloc_str.c
 
 OBJ_FILES = $(SRC_FILES:.c=.o)
 
