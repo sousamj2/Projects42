@@ -13,3 +13,5 @@ tests
 *.a
 others/
 compile_commands.json
+/C10/ex*/includes
+/C10/ex*/srcs/
