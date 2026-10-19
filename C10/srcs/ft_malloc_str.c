@@ -6,16 +6,16 @@
 /*   By: marisous <marisous@student.42lisb...>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/05 10:20:36 by marisous          #+#    #+#             */
-/*   Updated: 2026/09/05 16:01:53 by marisous         ###   ########.fr       */
+/*   Updated: 2026/09/25 12:37:49 by marisous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdlib.h>
 #include "ft.h"
 
-char	*ft_malloc_str(int n_chars, int *bad_status)
+unsigned char	*ft_malloc_str(int n_chars, int *bad_status)
 {
-	char	*result;
+	unsigned char	*result;
 
 	result = malloc(sizeof(char) * n_chars);
 	if (!result)
