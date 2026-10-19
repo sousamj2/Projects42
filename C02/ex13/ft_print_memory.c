@@ -6,21 +6,19 @@
 /*   By: marisous <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/30 15:35:15 by marisous          #+#    #+#             */
-/*   Updated: 2026/07/30 15:35:17 by marisous         ###   ########.fr       */
+/*   Updated: 2026/09/22 14:44:29 by marisous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-#include <stdio.h>
-
 #include <unistd.h>
 
 void	*ft_print_memory(void *addr, unsigned int size);
 
-int		ft_convert_char_to_hex(char c, int index);
+int		ft_convert_char_to_hex(unsigned char c, int index);
 void	ft_putnbr16(long nb, int index);
-void	ft_write_16_chars(char *addr, int nchar);
-void	ft_handle_end(char *addr, unsigned int index);
+void	ft_write_16_chars(unsigned char *addr, int nchar);
+void	ft_handle_end(unsigned char *addr, unsigned int index);
 
-void	ft_handle_end(char *addr, unsigned int index)
+void	ft_handle_end(unsigned char *addr, unsigned int index)
 {
 	unsigned int	nb;
 
@@ -37,16 +35,17 @@ void	ft_handle_end(char *addr, unsigned int index)
 	ft_write_16_chars(addr, index % 16);
 }
 
-void	ft_write_16_chars(char *addr, int nchar)
+void	ft_write_16_chars(unsigned char *addr, int nchar)
 {
 	int		index;
-	char	*c;
+	unsigned char	*c;
 
 	c = addr;
 	index = 0;
 	c -= (nchar - 1);
 	write(1, " ", 1);
-	while ((index < nchar || *c != '\0' ) && c <= addr)
+	while ((index < nchar ) && c <= addr)
+	/* while ((index < nchar || *c != '\0' ) && c <= addr) */
 	{
 		if (*c < ' ' || *c > '~')
 			write(1, ".", 1);
@@ -61,7 +60,7 @@ void	ft_write_16_chars(char *addr, int nchar)
 void	ft_putnbr16(long nb, int index)
 {
 	long	pow16;
-	char	c;
+	unsigned char	c;
 
 	pow16 = 16;
 	if (nb > 16 * 16)
@@ -81,7 +80,7 @@ void	ft_putnbr16(long nb, int index)
 		write(1, " ", 1);
 }
 
-void	ft_convert_char_to_int(char c, int index)
+void	ft_convert_char_to_int(unsigned char c, int index)
 {
 	long	nb;
 
@@ -97,15 +96,16 @@ void	ft_convert_char_to_int(char c, int index)
 void	*ft_print_memory(void *addr, unsigned int size)
 {
 	unsigned int	index;
-	char			*c;
+	unsigned char			*c;
 
 	if (!addr || size == 0)
 		return (addr);
 	index = 0;
-	c = (char *) addr;
+	c = (unsigned char *) addr;
 	while (index < size +1)
 	{
-		if (*c == '\0' || index == size)
+		/* if (*c == '\0' || index == size) */
+		if (index == size)
 		{
 			ft_handle_end(c, index);
 			break ;
